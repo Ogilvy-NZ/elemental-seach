@@ -190,8 +190,9 @@ class MySQLDatabase extends SS_MySQLDatabase
         return $list;
     }
 
-    public function generateSearchSnippet($keywords, $content)
+    public function generateSearchSnippet($keywords, $isContent)
     {
+        $content = $isContent ? $isContent : '';
         $snippetLength = 200;
         $content = str_replace('&nbsp;', ' ', $content); // &nbsp; is not playing well with spaces
         $content = preg_replace('/\xc2\xa0/', '', $content);
